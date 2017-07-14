@@ -22,6 +22,6 @@
 * [19.Tornado IOLoop与Configurable类](19tornado-ioloopyu-configurable-lei.md)
 * [20.弄清楚HTTPServer与Request处理流程](20nong-qing-chu-httpserver-yu-request-chu-li-liu-cheng.md)
 * [21.对socket封装的IOStream机制概览](21dui-socket-feng-zhuang-de-iostream-ji-zhi-gai-lan.md)
-* 22.IOStream实现读写的一些细节
-* 23.番外篇：Tornado的多进程管理分析
+* [22.IOStream实现读写的一些细节](22iostreamshi-xian-du-xie-de-yi-xie-xi-jie.md)
+* [23.番外篇：Tornado的多进程管理分析](23fan-wai-pian-ff1a-tornado-de-duo-jin-cheng-guan-li-fen-xi.md)
 
