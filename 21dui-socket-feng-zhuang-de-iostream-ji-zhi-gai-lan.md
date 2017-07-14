@@ -15,17 +15,12 @@ IOStream对socket读写进行了封装，分别提供读、写缓冲区实现对
 
 ```
 class IOStream(object):
-	def read_until(self, delimiter, callback): 
-	def read_bytes(self, num_bytes, callback, streaming_callback=None): 
-	def read_until_regex(self, regex, callback): 
-	def read_until_close(self, callback, streaming_callback=None): 
-	def write(self, data, callback=None):
-
+    def read_until(self, delimiter, callback): 
+    def read_bytes(self, num_bytes, callback, streaming_callback=None): 
+    def read_until_regex(self, regex, callback): 
+    def read_until_close(self, callback, streaming_callback=None): 
+    def write(self, data, callback=None):
 ```
-
-|  |
-| :--- |
-
 
 * read\_until和read\_bytes是最常用的读接口，它们工作的过程都是先注册读事件结束时调用的回调函数，然后调用\_try\_inline\_read方法。\_try\_inline\_read首先尝试\_read\_from\_buffer，即从上一次的读缓冲区中取数据，如果有数据直接调用 self.\_run\_callback\(callback, self.\_consume\(data\_length\)\) 执行回调函数，\_consume消耗掉了\_read\_buffer中的数据；否则即\_read\_buffer之前没有未读数据，先通过\_read\_to\_buffer将数据从socket读入\_read\_buffer，然后再执行\_read\_from\_buffer操作。read\_until和read\_bytes的区别在于\_read\_from\_buffer过程中截取数据的方法不同，read\_until读取到delimiter终止，而read\_bytes则读取num\_bytes个字节终止。执行过程如下图所示：
 
